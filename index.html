@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ken bu kai shito ryu school india (kanniya kumari)</title>
+    <link rel="stylesheet" href="karate.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Mobile Navigation Overlay -->
+    <div class="mobile-nav-overlay" id="mobileNavOverlay" onclick="closeMobileMenu()"></div>
+    
+    <!-- Mobile Navigation Links -->
+    <ul class="mobile-nav-links" id="mobileNavLinks">
+        <li><a href="#home" onclick="closeMobileMenu()"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="#techniques" onclick="closeMobileMenu()"><i class="fas fa-hand-rock"></i> Techniques</a></li>
+        <li><a href="#videos" onclick="closeMobileMenu()"><i class="fas fa-video"></i> Videos</a></li>
+        <li><a href="#membership" onclick="closeMobileMenu()"><i class="fas fa-crown"></i> Membership</a></li>
+        <li><a href="#masters" onclick="closeMobileMenu()"><i class="fas fa-user-tie"></i> Masters</a></li>
+        <li><a href="#awarded-photos" onclick="closeMobileMenu()"><i class="fas fa-certificate"></i> Awarded</a></li>
+        <li><a href="#winners" onclick="closeMobileMenu()"><i class="fas fa-trophy"></i> Champions</a></li>
+        <li><a href="#about" onclick="closeMobileMenu()"><i class="fas fa-info-circle"></i> About</a></li>
+        <li><button class="mobile-profile-btn" onclick="toggleMobileProfile(); closeMobileMenu();"><i class="fas fa-user"></i> Profile</button></li>
+    </ul>
+    
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-logo">
+            <img src="assets/logo.svg" alt="Karate Logo" class="logo-icon" width="50" height="50" onclick="openLogoUpload()" style="cursor: pointer;" title="Click to change logo (Admin only)">
+            <span>Ken bu kai shito ryu school india (kanniya kumari)</span>
+        </div>
+        
+        <!-- Hamburger Menu -->
+        <div class="hamburger-menu" id="hamburgerMenu" onclick="toggleMobileMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        
+        <ul class="nav-links">
+            <li><a href="#home" class="active">Home</a></li>
+            <li><a href="#techniques">Techniques</a></li>
+            <li><a href="#videos">Videos</a></li>
+            <li><a href="#membership">Membership</a></li>
+            <li><a href="#masters">Masters</a></li>
+            <li><a href="#awarded-photos">Awarded</a></li>
+            <li><a href="#winners">Champions</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#" onclick="toggleProfileMenu(); return false;" class="profile-nav-btn"><i class="fas fa-user"></i> Profile</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Master the Art of <span class="highlight">Karate</span></h1>
+            <p>Learn traditional martial arts from expert senseis. Build discipline, strength, and inner peace.</p>
+            <a href="#techniques" class="cta-btn">Start Learning</a>
+        </div>
+        <div class="hero-image">
+            <div class="karate-emblem">
+                <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="100" cy="100" r="90" fill="none" stroke="#ff6b35" stroke-width="4"/>
+                    <path d="M60 140 L100 60 L140 140 Z" fill="none" stroke="#fff" stroke-width="3"/>
+                    <circle cx="100" cy="90" r="15" fill="#ff6b35"/>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- Techniques Section -->
+    <section id="techniques" class="techniques">
+        <h2 class="section-title">Core Techniques</h2>
+        <div class="techniques-grid">
+            <div class="technique-card">
+                <div class="technique-icon">
+                    <i class="fas fa-hand-rock"></i>
+                </div>
+                <h3>Punches (Tsuki)</h3>
+                <p>Master the art of punching with oi-zuki, gyaku-zuki, and more.</p>
+                <a href="#" class="learn-more">Learn More</a>
+            </div>
+            <div class="technique-card">
+                <div class="technique-icon">
+                    <i class="fas fa-football"></i>
+                </div>
+                <h3>Kicks (Geri)</h3>
+                <p>Powerful kicks including mae-geri, yoko-geri, and mawashi-geri.</p>
+                <a href="#" class="learn-more">Learn More</a>
+            </div>
+            <div class="technique-card">
+                <div class="technique-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3>Blocks (Uke)</h3>
+                <p>Defensive techniques to protect yourself from attacks.</p>
+                <a href="#" class="learn-more">Learn More</a>
+            </div>
+            <div class="technique-card">
+                <div class="technique-icon">
+                    <i class="fas fa-running"></i>
+                </div>
+                <h3>Stances (Dachi)</h3>
+                <p>Learn proper stances for balance and power generation.</p>
+                <a href="#" class="learn-more">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Videos Section -->
+    <section id="videos" class="videos">
+        <h2 class="section-title">Training Videos</h2>
+        <p class="section-subtitle">Watch and learn from our expert senseis</p>
+        <div class="user-membership-info" id="userMembershipInfo">
+            <span class="membership-badge" id="currentMembershipBadge">Free Member</span>
+        </div>
+        <div class="video-controls">
+            <button class="video-btn active" onclick="filterVideos('all')">All</button>
+            <button class="video-btn" onclick="filterVideos('basics')">Basics</button>
+            <button class="video-btn" onclick="filterVideos('kata')">Kata</button>
+            <button class="video-btn" onclick="filterVideos('sparring')">Sparring</button>
+        </div>
+        <div class="video-grid" id="videoGrid">
+            <div class="video-card" data-category="basics" data-membership="free" data-video-id="1">
+                <div class="video-thumbnail">
+                    <i class="fas fa-play-circle"></i>
+                    <span class="video-duration">10:30</span>
+                    <span class="lock-overlay" id="lock-1"><i class="fas fa-lock"></i></span>
+                    <div class="admin-video-actions">
+                        <button class="edit-video-btn" onclick="editVideo(1)" aria-label="Edit Video"><i class="fas fa-edit"></i></button>
+                        <button class="delete-video-btn" onclick="deleteVideo(1)" aria-label="Delete Video"><i class="fas fa-trash"></i></button>
+                    </div>
+                </div>
+                <div class="video-info">
+                    <h3>Beginner's Guide to Karate Stances</h3>
+                    <p>Learn the fundamental stances every karateka must know.</p>
+                    <span class="video-tag free">Free</span>
+                </div>
+            </div>
+            <div class="video-card" data-category="kata" data-membership="silver" data-video-id="2">
+                <div class="video-thumbnail">
+                    <i class="fas fa-play-circle"></i>
+                    <span class="video-duration">15:45</span>
+                    <span class="lock-overlay" id="lock-2"><i class="fas fa-lock"></i></span>
+                    <div class="admin-video-actions">
+                        <button class="edit-video-btn" onclick="editVideo(2)" aria-label="Edit Video"><i class="fas fa-edit"></i></button>
+                        <button class="delete-video-btn" onclick="deleteVideo(2)" aria-label="Delete Video"><i class="fas fa-trash"></i></button>
+                    </div>
+                </div>
+                <div class="video-info">
+                    <h3>Taikyoku Shodan - Step by Step</h3>
+                    <p>Complete breakdown of your first kata.</p>
+                    <span class="video-tag silver">Silver</span>
+                </div>
+            </div>
+            <div class="video-card" data-category="sparring" data-membership="bronze" data-video-id="3">
+                <div class="video-thumbnail">
+                    <i class="fas fa-play-circle"></i>
+                    <span class="video-duration">08:20</span>
+                    <span class="lock-overlay" id="lock-3"><i class="fas fa-lock"></i></span>
+                    <div class="admin-video-actions">
+                        <button class="edit-video-btn" onclick="editVideo(3)" aria-label="Edit Video"><i class="fas fa-edit"></i></button>
+                        <button class="delete-video-btn" onclick="deleteVideo(3)" aria-label="Delete Video"><i class="fas fa-trash"></i></button>
+                    </div>
+                </div>
+                <div class="video-info">
+                    <h3>Kumite Techniques for Beginners</h3>
+                    <p>Essential sparring techniques and strategies.</p>
+                    <span class="video-tag bronze">Bronze</span>
+                </div>
+            </div>
+            <div class="video-card" data-category="basics" data-membership="free" data-video-id="4">
+                <div class="video-thumbnail">
+                    <i class="fas fa-play-circle"></i>
+                    <span class="video-duration">12:00</span>
+                    <span class="lock-overlay" id="lock-4"><i class="fas fa-lock"></i></span>
+                    <div class="admin-video-actions">
+                        <button class="edit-video-btn" onclick="editVideo(4)" aria-label="Edit Video"><i class="fas fa-edit"></i></button>
+                        <button class="delete-video-btn" onclick="deleteVideo(4)" aria-label="Delete Video"><i class="fas fa-trash"></i></button>
+                    </div>
+                </div>
+                <div class="video-info">
+                    <h3>Perfecting Your Punch</h3>
+                    <p>Master the proper form for powerful punches.</p>
+                    <span class="video-tag free">Free</span>
+                </div>
+            </div>
+            <div class="video-card" data-category="kata" data-membership="gold" data-video-id="5">
+                <div class="video-thumbnail">
+                    <i class="fas fa-play-circle"></i>
+                    <span class="video-duration">25:30</span>
+                    <span class="lock-overlay" id="lock-5"><i class="fas fa-lock"></i></span>
+                    <div class="admin-video-actions">
+                        <button class="edit-video-btn" onclick="editVideo(5)" aria-label="Edit Video"><i class="fas fa-edit"></i></button>
+                        <button class="delete-video-btn" onclick="deleteVideo(5)" aria-label="Delete Video"><i class="fas fa-trash"></i></button>
+                    </div>
+                </div>
+                <div class="video-info">
+                    <h3>Heian Shodan Kata Tutorial</h3>
+                    <p>Comprehensive guide to the first Heian kata.</p>
+                    <span class="video-tag gold">Gold</span>
+                </div>
+            </div>
+            <div class="video-card" data-category="sparring" data-membership="emerald" data-video-id="6">
+                <div class="video-thumbnail">
+                    <i class="fas fa-play-circle"></i>
+                    <span class="video-duration">18:15</span>
+                    <span class="lock-overlay" id="lock-6"><i class="fas fa-lock"></i></span>
+                    <div class="admin-video-actions">
+                        <button class="edit-video-btn" onclick="editVideo(6)" aria-label="Edit Video"><i class="fas fa-edit"></i></button>
+                        <button class="delete-video-btn" onclick="deleteVideo(6)" aria-label="Delete Video"><i class="fas fa-trash"></i></button>
+                    </div>
+                </div>
+                <div class="video-info">
+                    <h3>Advanced Sparring Strategies</h3>
+                    <p>Take your kumite skills to the next level.</p>
+                    <span class="video-tag emerald">Emerald</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="add-video-section">
+            <button class="add-video-btn" onclick="openAddVideoModal()">
+                <i class="fas fa-plus"></i> Add New Video
+            </button>
+        </div>
+    </section>
+
+    <!-- Membership Section -->
+    <section id="membership" class="membership">
+        <h2 class="section-title">Membership Plans</h2>
+        <p class="section-subtitle">Choose the plan that suits your training goals</p>
+        
+        <div class="membership-grid">
+            <!-- Free Plan -->
+            <div class="membership-card free">
+                <div class="membership-header">
+                    <div class="membership-icon">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h3>Free</h3>
+                    <p class="membership-price" id="freePrice">₹0<span>/month</span></p>
+                </div>
+                <ul class="membership-features">
+                    <li><i class="fas fa-check"></i> Basic techniques access</li>
+                    <li><i class="fas fa-check"></i> 5 Free videos</li>
+                    <li><i class="fas fa-check"></i> Community forum</li>
+                    <li class="disabled"><i class="fas fa-times"></i> Advanced kata videos</li>
+                    <li class="disabled"><i class="fas fa-times"></i> Sparring techniques</li>
+                    <li class="disabled"><i class="fas fa-times"></i> Personal feedback</li>
+                </ul>
+                <button class="membership-btn current" onclick="selectMembership('free')">Current Plan</button>
+            </div>
+            
+            <!-- Bronze Plan -->
+            <div class="membership-card bronze">
+                <div class="membership-header">
+                    <div class="membership-icon">
+                        <i class="fas fa-medal"></i>
+                    </div>
+                    <h3>Bronze</h3>
+                    <p class="membership-price" id="bronzePrice">₹1,500<span>/month</span></p>
+                </div>
+                <ul class="membership-features">
+                    <li><i class="fas fa-check"></i> All Free features</li>
+                    <li><i class="fas fa-check"></i> 15 Bronze videos</li>
+                    <li><i class="fas fa-check"></i> Sparring basics</li>
+                    <li class="disabled"><i class="fas fa-times"></i> Advanced kata</li>
+                    <li class="disabled"><i class="fas fa-times"></i> Gold & Emerald content</li>
+                    <li class="disabled"><i class="fas fa-times"></i> Personal feedback</li>
+                </ul>
+                <button class="membership-btn" onclick="selectMembership('bronze')">Upgrade to Bronze</button>
+            </div>
+            
+            <!-- Silver Plan -->
+            <div class="membership-card silver">
+                <div class="membership-header">
+                    <div class="membership-icon">
+                        <i class="fas fa-medal"></i>
+                    </div>
+                    <h3>Silver</h3>
+                    <p class="membership-price" id="silverPrice">₹3,000<span>/month</span></p>
+                </div>
+                <ul class="membership-features">
+                    <li><i class="fas fa-check"></i> All Bronze features</li>
+                    <li><i class="fas fa-check"></i> 25 Silver videos</li>
+                    <li><i class="fas fa-check"></i> Intermediate kata</li>
+                    <li><i class="fas fa-check"></i> Sparring techniques</li>
+                    <li class="disabled"><i class="fas fa-times"></i> Gold & Emerald content</li>
+                    <li class="disabled"><i class="fas fa-times"></i> Personal feedback</li>
+                </ul>
+                <button class="membership-btn" onclick="selectMembership('silver')">Upgrade to Silver</button>
+            </div>
+            
+            <!-- Gold Plan -->
+            <div class="membership-card gold">
+                <div class="membership-header">
+                    <div class="membership-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <h3>Gold</h3>
+                    <p class="membership-price" id="goldPrice">₹3,500<span>/month</span></p>
+                </div>
+                <ul class="membership-features">
+                    <li><i class="fas fa-check"></i> All Silver features</li>
+                    <li><i class="fas fa-check"></i> 40 Gold videos</li>
+                    <li><i class="fas fa-check"></i> Advanced kata mastery</li>
+                    <li><i class="fas fa-check"></i> Competition training</li>
+                    <li class="disabled"><i class="fas fa-times"></i> Emerald exclusive</li>
+                    <li class="disabled"><i class="fas fa-times"></i> Personal feedback</li>
+                </ul>
+                <button class="membership-btn" onclick="selectMembership('gold')">Upgrade to Gold</button>
+            </div>
+            
+            <!-- Emerald Plan -->
+            <div class="membership-card emerald">
+                <div class="membership-header">
+                    <div class="membership-icon">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <h3>Emerald</h3>
+                    <p class="membership-price" id="emeraldPrice">₹7,000<span>/month</span></p>
+                </div>
+                <ul class="membership-features">
+                    <li><i class="fas fa-check"></i> All Gold features</li>
+                    <li><i class="fas fa-check"></i> Unlimited videos</li>
+                    <li><i class="fas fa-check"></i> Master-level training</li>
+                    <li><i class="fas fa-check"></i> Competition prep</li>
+                    <li><i class="fas fa-check"></i> Exclusive content</li>
+                    <li><i class="fas fa-check"></i> Personal feedback</li>
+                </ul>
+                <button class="membership-btn" onclick="selectMembership('emerald')">Get Emerald</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Masters/Instructors Section -->
+    <section id="masters" class="masters">
+        <h2 class="section-title">Our Masters & Senseis</h2>
+        <p class="section-subtitle">Learn from the experienced masters of Ken bu kai</p>
+        
+        <div class="masters-gallery">
+            <div class="master-card" data-master-id="1">
+                <div class="master-photo">
+                    <i class="fas fa-user-plus"></i>
+                    <span class="add-photo">Add Photo</span>
+                    <div class="admin-photo-actions">
+                        <button class="edit-photo-btn" onclick="editMasterPhoto(this)" aria-label="Edit Photo"><i class="fas fa-edit"></i></button>
+                        <button class="delete-photo-btn" onclick="deleteMasterPhoto(this)" aria-label="Delete Photo"><i class="fas fa-trash"></i></button>
+                    </div>
+                </div>
+                <div class="master-info">
+                    <h3>Master Name</h3>
+                    <p class="master-title">Chief Instructor</p>
+                    <p class="master-belt">10th Dan Black Belt</p>
+                    <p class="master-experience">30+ Years Experience</p>
+                </div>
+            </div>
+            <div class="master-card" data-master-id="2">
+                <div class="master-photo">
+                    <i class="fas fa-user-plus"></i>
+                    <span class="add-photo">Add Photo</span>
+                    <div class="admin-photo-actions">
+                        <button class="edit-photo-btn" onclick="editMasterPhoto(this)" aria-label="Edit Photo"><i class="fas fa-edit"></i></button>
+                        <button class="delete-photo-btn" onclick="deleteMasterPhoto(this)" aria-label="Delete Photo"><i class="fas fa-trash"></i></button>
+                    </div>
+                </div>
+                <div class="master-info">
+                    <h3>Master Name</h3>
+                    <p class="master-title">Senior Instructor</p>
+                    <p class="master-belt">8th Dan Black Belt</p>
+                    <p class="master-experience">25+ Years Experience</p>
+                </div>
+            </div>
+            <div class="master-card" data-master-id="3">
+                <div class="master-photo">
+                    <i class="fas fa-user-plus"></i>
+                    <span class="add-photo">Add Photo</span>
+                    <div class="admin-photo-actions">
+                        <button class="edit-photo-btn" onclick="editMasterPhoto(this)" aria-label="Edit Photo"><i class="fas fa-edit"></i></button>
+                        <button class="delete-photo-btn" onclick="deleteMasterPhoto(this)" aria-label="Delete Photo"><i class="fas fa-trash"></i></button>
+                    </div>
+                </div>
+                <div class="master-info">
+                    <h3>Master Name</h3>
+                    <p class="master-title">Assistant Instructor</p>
+                    <p class="master-belt">5th Dan Black Belt</p>
+                    <p class="master-experience">15+ Years Experience</p>
+                </div>
+            </div>
+            <div class="master-card" data-master-id="4">
+                <div class="master-photo">
+                    <i class="fas fa-user-plus"></i>
+                    <span class="add-photo">Add Photo</span>
+                    <div class="admin-photo-actions">
+                        <button class="edit-photo-btn" onclick="editMasterPhoto(this)" aria-label="Edit Photo"><i class="fas fa-edit"></i></button>
+                        <button class="delete-photo-btn" onclick="deleteMasterPhoto(this)" aria-label="Delete Photo"><i class="fas fa-trash"></i></button>
+                    </div>
+                </div>
+                <div class="master-info">
+                    <h3>Master Name</h3>
+                    <p class="master-title">Junior Instructor</p>
+                    <p class="master-belt">3rd Dan Black Belt</p>
+                    <p class="master-experience">8+ Years Experience</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="add-master-section">
+            <button class="add-master-btn" onclick="openAddMasterModal()">
+                <i class="fas fa-plus"></i> Add New Master
+            </button>
+        </div>
+    </section>
+
+    <!-- Master Awarded Photos Section -->
+    <section id="awarded-photos" class="awarded-photos">
+        <h2 class="section-title">Master Awarded Photos</h2>
+        <p class="section-subtitle">Celebrating the achievements and certifications of our masters</p>
+        
+        <div class="awarded-gallery">
+            <div class="awarded-card">
+                <div class="awarded-photo">
+                    <i class="fas fa-certificate"></i>
+                    <span class="add-photo">Add Award Photo</span>
+                </div>
+                <div class="awarded-info">
+                    <h3>Master Award Title</h3>
+                    <p class="awarded-date">Date: January 2024</p>
+                    <p class="awarded-description">Description of the award or achievement</p>
+                </div>
+            </div>
+            <div class="awarded-card">
+                <div class="awarded-photo">
+                    <i class="fas fa-certificate"></i>
+                    <span class="add-photo">Add Award Photo</span>
+                </div>
+                <div class="awarded-info">
+                    <h3>Master Award Title</h3>
+                    <p class="awarded-date">Date: March 2024</p>
+                    <p class="awarded-description">Description of the award or achievement</p>
+                </div>
+            </div>
+            <div class="awarded-card">
+                <div class="awarded-photo">
+                    <i class="fas fa-certificate"></i>
+                    <span class="add-photo">Add Award Photo</span>
+                </div>
+                <div class="awarded-info">
+                    <h3>Master Award Title</h3>
+                    <p class="awarded-date">Date: June 2024</p>
+                    <p class="awarded-description">Description of the award or achievement</p>
+                </div>
+            </div>
+            <div class="awarded-card">
+                <div class="awarded-photo">
+                    <i class="fas fa-certificate"></i>
+                    <span class="add-photo">Add Award Photo</span>
+                </div>
+                <div class="awarded-info">
+                    <h3>Master Award Title</h3>
+                    <p class="awarded-date">Date: September 2024</p>
+                    <p class="awarded-description">Description of the award or achievement</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="add-awarded-section">
+            <button class="add-awarded-btn" onclick="openAddAwardedPhotoModal()">
+                <i class="fas fa-plus"></i> Add Award Photo
+            </button>
+        </div>
+    </section>
+
+    <!-- Winners/Champions Section -->
+    <section id="winners" class="winners">
+        <h2 class="section-title">Champions & Winners</h2>
+        <p class="section-subtitle">Celebrating our dojo's achievements and champions</p>
+        
+        <div class="winners-gallery">
+            <div class="winner-card">
+                <div class="winner-photo">
+                    <i class="fas fa-user-plus"></i>
+                    <span class="add-photo">Add Photo</span>
+                </div>
+                <div class="winner-info">
+                    <h3>Champion Name</h3>
+                    <p>Competition: National Karate Championship 2024</p>
+                    <p>Achievement: Gold Medal - Kumite</p>
+                </div>
+            </div>
+            <div class="winner-card">
+                <div class="winner-photo">
+                    <i class="fas fa-user-plus"></i>
+                    <span class="add-photo">Add Photo</span>
+                </div>
+                <div class="winner-info">
+                    <h3>Champion Name</h3>
+                    <p>Competition: Regional Tournament 2024</p>
+                    <p>Achievement: Gold Medal - Kata</p>
+                </div>
+            </div>
+            <div class="winner-card">
+                <div class="winner-photo">
+                    <i class="fas fa-user-plus"></i>
+                    <span class="add-photo">Add Photo</span>
+                </div>
+                <div class="winner-info">
+                    <h3>Champion Name</h3>
+                    <p>Competition: Open Dojo Championship</p>
+                    <p>Achievement: 1st Place - Team Kumite</p>
+                </div>
+            </div>
+            <div class="winner-card">
+                <div class="winner-photo">
+                    <i class="fas fa-user-plus"></i>
+                    <span class="add-photo">Add Photo</span>
+                </div>
+                <div class="winner-info">
+                    <h3>Champion Name</h3>
+                    <p>Competition: Youth Karate Cup</p>
+                    <p>Achievement: Champion - Under 18</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="add-winner-section">
+            <button class="add-winner-btn" onclick="openAddWinnerModal()">
+                <i class="fas fa-plus"></i> Add New Champion
+            </button>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+    <section id="about" class="about">
+        <h2 class="section-title">About Our Academy</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p>Welcome to Karate Academy, where tradition meets excellence. Our dojo has been teaching the art of karate,kalari,silimbam,ninjack,locks,balance and more for over 20 years, producing champions and instilling discipline in students of all ages.</p>
+                <p>Our experienced senseis are dedicated to passing on the wisdom of karate, teaching not just physical techniques but also the philosophical principles that guide practitioners on their journey to self-improvement.</p>
+                <P>Our masters are certified by Soke KENYU MABUNI ( governer of Shito Ryu )</P>
+                <div class="stats">
+                    <div class="stat">
+                        <span class="stat-number">500+</span>
+                        <span class="stat-label">Students</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">50+</span>
+                        <span class="stat-label">Championships</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">20+</span>
+                        <span class="stat-label">Years Experience</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Admin Key Management Section (Admin Only) -->
+    <section id="admin-keys" class="admin-keys" style="display: none;">
+        <h2 class="section-title">🔐 Security Key Management</h2>
+        <p class="section-subtitle">Configure security key validity for membership levels</p>
+        
+        <div class="admin-key-grid">
+            <!-- Bronze Key Settings -->
+            <div class="key-settings-card bronze">
+                <div class="key-header">
+                    <i class="fas fa-medal"></i>
+                    <h3>Bronze Key</h3>
+                </div>
+                <div class="key-form">
+                    <div class="form-group">
+                        <label>Prefix</label>
+                        <input type="text" id="bronzePrefix" value="KK" maxlength="3">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Min Number</label>
+                            <input type="number" id="bronzeMin" value="100" min="0" max="999">
+                        </div>
+                        <div class="form-group">
+                            <label>Max Number</label>
+                            <input type="number" id="bronzeMax" value="999" min="0" max="999">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Key Length (digits)</label>
+                        <select id="bronzeLength">
+                            <option value="3" selected>3</option>
+                            <option value="2">2</option>
+                            <option value="1">1</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Status</label>
+                        <select id="bronzeStatus">
+                            <option value="active" selected>Active</option>
+                            <option value="inactive">Inactive</option>
+                        </select>
+                    </div>
+                    <button class="save-key-btn" onclick="saveKeySettings('bronze')">Save Bronze Settings</button>
+                </div>
+            </div>
+            
+            <!-- Silver Key Settings -->
+            <div class="key-settings-card silver">
+                <div class="key-header">
+                    <i class="fas fa-medal"></i>
+                    <h3>Silver Key</h3>
+                </div>
+                <div class="key-form">
+                    <div class="form-group">
+                        <label>Prefix</label>
+                        <input type="text" id="silverPrefix" value="KK" maxlength="3">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Min Number</label>
+                            <input type="number" id="silverMin" value="444" min="0" max="999">
+                        </div>
+                        <div class="form-group">
+                            <label>Max Number</label>
+                            <input type="number" id="silverMax" value="777" min="0" max="999">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Key Length (digits)</label>
+                        <select id="silverLength">
+                            <option value="3" selected>3</option>
+                            <option value="2">2</option>
+                            <option value="1">1</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Status</label>
+                        <select id="silverStatus">
+                            <option value="active" selected>Active</option>
+                            <option value="inactive">Inactive</option>
+                        </select>
+                    </div>
+                    <button class="save-key-btn" onclick="saveKeySettings('silver')">Save Silver Settings</button>
+                </div>
+            </div>
+            
+            <!-- Gold Key Settings -->
+            <div class="key-settings-card gold">
+                <div class="key-header">
+                    <i class="fas fa-trophy"></i>
+                    <h3>Gold Key</h3>
+                </div>
+                <div class="key-form">
+                    <div class="form-group">
+                        <label>Prefix</label>
+                        <input type="text" id="goldPrefix" value="KK" maxlength="3">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Min Number</label>
+                            <input type="number" id="goldMin" value="88" min="0" max="99">
+                        </div>
+                        <div class="form-group">
+                            <label>Max Number</label>
+                            <input type="number" id="goldMax" value="99" min="0" max="99">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Key Length (digits)</label>
+                        <select id="goldLength">
+                            <option value="2" selected>2</option>
+                            <option value="3">3</option>
+                            <option value="1">1</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Status</label>
+                        <select id="goldStatus">
+                            <option value="active" selected>Active</option>
+                            <option value="inactive">Inactive</option>
+                        </select>
+                    </div>
+                    <button class="save-key-btn" onclick="saveKeySettings('gold')">Save Gold Settings</button>
+                </div>
+            </div>
+            
+            <!-- Emerald Key Settings -->
+            <div class="key-settings-card emerald">
+                <div class="key-header">
+                    <i class="fas fa-gem"></i>
+                    <h3>Emerald Key</h3>
+                </div>
+                <div class="key-form">
+                    <div class="form-group">
+                        <label>Prefix</label>
+                        <input type="text" id="emeraldPrefix" value="KK" maxlength="3">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Min Number</label>
+                            <input type="number" id="emeraldMin" value="0" min="0" max="9">
+                        </div>
+                        <div class="form-group">
+                            <label>Max Number</label>
+                            <input type="number" id="emeraldMax" value="9" min="0" max="9">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Key Length (digits)</label>
+                        <select id="emeraldLength">
+                            <option value="1" selected>1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Status</label>
+                        <select id="emeraldStatus">
+                            <option value="active" selected>Active</option>
+                            <option value="inactive">Inactive</option>
+                        </select>
+                    </div>
+                    <button class="save-key-btn" onclick="saveKeySettings('emerald')">Save Emerald Settings</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="admin-actions">
+            <button class="reset-defaults-btn" onclick="resetToDefaults()">
+                <i class="fas fa-undo"></i> Reset to Defaults
+            </button>
+            <button class="generate-test-btn" onclick="generateTestKeys()">
+                <i class="fas fa-key"></i> Generate Test Keys
+            </button>
+        </div>
+        
+        <div class="current-keys-display" id="currentKeysDisplay">
+            <h3>Valid Keys Summary</h3>
+            <div class="keys-list" id="keysList"></div>
+        </div>
+        
+        <!-- User Management Section -->
+        <div class="user-management-section">
+            <h3>👥 User Membership Management</h3>
+            <p class="section-subtitle">Upgrade or downgrade user membership levels</p>
+            
+            <div class="add-user-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>User Email/Username</label>
+                        <input type="text" id="adminUserEmail" placeholder="Enter user email or username">
+                    </div>
+                    <div class="form-group">
+                        <label>New Membership Level</label>
+                        <select id="adminUserMembership">
+                            <option value="free">Free</option>
+                            <option value="bronze">Bronze</option>
+                            <option value="silver">Silver</option>
+                            <option value="gold">Gold</option>
+                            <option value="emerald">Emerald</option>
+                        </select>
+                    </div>
+                </div>
+                <button class="upgrade-user-btn" onclick="adminUpgradeUser()">
+                    <i class="fas fa-arrow-up"></i> Update User Membership
+                </button>
+            </div>
+            
+            <div class="users-list-container">
+                <h4>Registered Users</h4>
+                <div class="users-table" id="usersTable">
+                    <div class="users-table-header">
+                        <span>User</span>
+                        <span>Current Membership</span>
+                        <span>Status</span>
+                        <span>Action</span>
+                    </div>
+                    <div id="usersListBody">
+                        <!-- Users will be loaded here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Karate Academy</h3>
+                <p>Mastering the art since 2004</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#techniques">Techniques</a></li>
+                    <li><a href="#videos">Videos</a></li>
+                    <li><a href="#winners">Champions</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>Our Dojo's</p>
+                <p><i class="fas fa-map-marker-alt"></i>Nithiravilai</p>
+                <p><i class="fas fa-phone"></i> (555) 123-4567</p>
+                <p><i class="fas fa-envelope"></i> info@karateacademy.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Karate Academy. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Add Winner Modal -->
+    <div class="modal" id="addWinnerModal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeAddWinnerModal()">&times;</span>
+            <h2>Add New Champion</h2>
+            <form id="addWinnerForm" onsubmit="addWinner(event)">
+                <div class="form-group">
+                    <label for="winnerName">Champion Name</label>
+                    <input type="text" id="winnerName" required placeholder="Enter champion's name">
+                </div>
+                <div class="form-group">
+                    <label for="winnerCompetition">Competition</label>
+                    <input type="text" id="winnerCompetition" required placeholder="Enter competition name">
+                </div>
+                <div class="form-group">
+                    <label for="winnerAchievement">Achievement</label>
+                    <input type="text" id="winnerAchievement" required placeholder="Enter achievement">
+                </div>
+                <div class="form-group">
+                    <label for="winnerPhoto">Photo</label>
+                    <input type="file" id="winnerPhoto" accept="image/*">
+                </div>
+                <button type="submit" class="submit-btn">Add Champion</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Add Master Modal -->
+    <div class="modal" id="addMasterModal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeAddMasterModal()">&times;</span>
+            <h2>Add New Master</h2>
+            <form id="addMasterForm" onsubmit="addMaster(event)">
+                <div class="form-group">
+                    <label for="masterName">Master Name</label>
+                    <input type="text" id="masterName" required placeholder="Enter master's name">
+                </div>
+                <div class="form-group">
+                    <label for="masterTitle">Title</label>
+                    <input type="text" id="masterTitle" required placeholder="e.g., Chief Instructor">
+                </div>
+                <div class="form-group">
+                    <label for="masterBelt">Belt Rank</label>
+                    <input type="text" id="masterBelt" required placeholder="e.g., 10th Dan Black Belt">
+                </div>
+                <div class="form-group">
+                    <label for="masterExperience">Experience</label>
+                    <input type="text" id="masterExperience" required placeholder="e.g., 30+ Years Experience">
+                </div>
+                <div class="form-group">
+                    <label for="masterPhoto">Photo</label>
+                    <input type="file" id="masterPhoto" accept="image/*">
+                </div>
+                <button type="submit" class="submit-btn">Add Master</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Add Awarded Photo Modal -->
+    <div class="modal" id="addAwardedPhotoModal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeAddAwardedPhotoModal()">&times;</span>
+            <h2>Add Award Photo</h2>
+            <form id="addAwardedPhotoForm" onsubmit="addAwardedPhoto(event)">
+                <div class="form-group">
+                    <label for="awardedTitle">Award Title</label>
+                    <input type="text" id="awardedTitle" required placeholder="e.g., Best Instructor Award">
+                </div>
+                <div class="form-group">
+                    <label for="awardedDate">Date</label>
+                    <input type="date" id="awardedDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="awardedDescription">Description</label>
+                    <textarea id="awardedDescription" rows="3" placeholder="Description of the award or achievement"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="awardedPhoto">Photo</label>
+                    <input type="file" id="awardedPhoto" accept="image/*">
+                </div>
+                <button type="submit" class="submit-btn">Add Award Photo</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Logo Upload Modal -->
+    <div class="modal" id="logoUploadModal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeLogoUploadModal()">&times;</span>
+            <h2>Change Logo</h2>
+            <form id="logoUploadForm" onsubmit="uploadLogo(event)">
+                <div class="form-group">
+                    <label for="logoUpload">Select New Logo</label>
+                    <input type="file" id="logoUpload" accept="image/*" required>
+                </div>
+                <button type="submit" class="submit-btn">Upload Logo</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Profile Dropdown -->
+    <div class="profile-dropdown" id="profileDropdown">
+        <div class="profile-header">
+            <div class="profile-avatar-large">
+                <i class="fas fa-user"></i>
+            </div>
+            <h3 id="userName">Sensei</h3>
+            <p id="userRole">Karate Student</p>
+        </div>
+        <ul class="profile-menu" id="profileMenu">
+            <li><a href="#" onclick="showMembers(); return false;"><i class="fas fa-users"></i> Members</a></li>
+            <li class="admin-only-item" style="display: none;"><a href="#" onclick="openPricingModal(); return false;"><i class="fas fa-tag"></i> Membership Pricing</a></li>
+            <li class="admin-only-item" style="display: none;"><a href="#" onclick="openContactDetailsModal(); return false;"><i class="fas fa-address-card"></i> Contact Details</a></li>
+            <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
+            <li><a href="#"><i class="fas fa-book"></i> My Progress</a></li>
+            <li><a href="#"><i class="fas fa-trophy"></i> Achievements</a></li>
+            <li><a href="#" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+        </ul>
+    </div>
+
+    <!-- Members Management Modal -->
+    <div class="modal" id="membersModal">
+        <div class="modal-content" style="max-width: 700px;">
+            <span class="modal-close" onclick="closeMembersModal()">&times;</span>
+            <h2>👥 Members Management</h2>
+            
+            <!-- Add New Member Section -->
+            <div class="add-member-section">
+                <h3>Add New Member</h3>
+                <form id="addMemberForm" onsubmit="addNewMember(event)">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="memberName">Member Name</label>
+                            <input type="text" id="memberName" required placeholder="Enter member's name">
+                        </div>
+                        <div class="form-group">
+                            <label for="memberEmail">Member Email</label>
+                            <input type="text" id="memberEmail" required placeholder="Enter email or username">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="memberKey">Security Key</label>
+                            <input type="text" id="memberKey" required placeholder="Enter security key">
+                        </div>
+                        <div class="form-group">
+                            <label for="memberMembership">Membership Level</label>
+                            <select id="memberMembership">
+                                <option value="free">Free</option>
+                                <option value="bronze">Bronze</option>
+                                <option value="silver">Silver</option>
+                                <option value="gold">Gold</option>
+                                <option value="emerald">Emerald</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" class="submit-btn">Add Member</button>
+                </form>
+            </div>
+            
+            <!-- Previous Members List -->
+            <div class="previous-members-section">
+                <h3>📋 All Members & Their Keys</h3>
+                <div class="members-list" id="membersList">
+                    <!-- Members will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="karate.js"></script>
+</body>
+</html>
