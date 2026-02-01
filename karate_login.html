@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ken bu kai shito ryu school india (kanniya kumari)</title>
+    <link rel="stylesheet" href="karate.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-box">
+            <div class="login-header">
+                <div class="karate-icon">
+                    <img src="assets/logo.svg" alt="Karate Logo" width="80" height="80">
+                </div>
+                <h1>Ken bu kai shito ryu school india (kanniya kumari)</h1>
+                <p>Enter the dojo of champions</p>
+            </div>
+            
+            <div class="auth-tabs">
+                <button class="auth-tab active" data-tab="login">Login</button>
+                <button class="auth-tab" data-tab="signup">Sign Up</button>
+            </div>
+            
+            <form id="loginForm" class="login-form auth-form active">
+                <div class="form-group">
+                    <label for="username">Username / Email</label>
+                    <input type="text" id="username" name="username" required placeholder="Enter your username or email">
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required placeholder="Enter your password">
+                </div>
+                
+                <button type="submit" class="login-btn">Enter Dojo</button>
+            </form>
+            
+            <form id="signupForm" class="signup-form auth-form">
+                <div class="form-group">
+                    <label for="signupName">Full Name</label>
+                    <input type="text" id="signupName" name="signupName" required placeholder="Enter your full name">
+                </div>
+                
+                <div class="form-group">
+                    <label for="signupEmail">Email</label>
+                    <input type="email" id="signupEmail" name="signupEmail" required placeholder="Enter your email">
+                </div>
+                
+                <div class="form-group">
+                    <label for="signupPassword">Password</label>
+                    <input type="password" id="signupPassword" name="signupPassword" required placeholder="Create a password">
+                </div>
+                
+                <div class="form-group">
+                    <label for="signupKey">Security Key (Optional)</label>
+                    <input type="password" id="signupKey" name="signupKey" placeholder="Enter your key" autocomplete="off">
+                </div>
+                
+                <button type="submit" class="signup-btn">Join Dojo</button>
+            </form>
+            
+            <div class="visit-section">
+                <p>Or just want to explore?</p>
+                <a href="karate_index.html" class="visit-btn" onclick="visitAsGuest()">
+                    <i class="fas fa-eye"></i> Visit as Guest
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script src="karate.js"></script>
+    <script>
+        // Auth tab switching
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabs = document.querySelectorAll('.auth-tab');
+            const forms = document.querySelectorAll('.auth-form');
+            
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    const targetTab = tab.dataset.tab;
+                    
+                    // Update tabs
+                    tabs.forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+                    
+                    // Update forms
+                    forms.forEach(f => {
+                        f.classList.remove('active');
+                        if (f.id === targetTab + 'Form') {
+                            f.classList.add('active');
+                        }
+                    });
+                });
+            });
+            
+            // Visit as guest
+        function visitAsGuest() {
+            sessionStorage.setItem('isLoggedIn', 'true');
+            sessionStorage.setItem('username', 'Guest');
+            sessionStorage.setItem('userEmail', 'guest');
+            sessionStorage.setItem('isAdmin', 'false');
+            sessionStorage.setItem('isGuest', 'true');
+            sessionStorage.setItem('membershipLevel', 'free');
+        }
+            const signupForm = document.getElementById('signupForm');
+            if (signupForm) {
+                signupForm.addEventListener('submit', handleSignup);
+            }
+            
+            // Login form handler
+            const loginForm = document.getElementById('loginForm');
+            if (loginForm) {
+                loginForm.addEventListener('submit', handleLogin);
+            }
+        });
+        
+        function handleSignup(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('signupName').value.trim();
+            const email = document.getElementById('signupEmail').value.trim().toLowerCase();
+            const password = document.getElementById('signupPassword').value;
+            const key = document.getElementById('signupKey').value.trim();
+            
+            if (!name || !email || !password) {
+                alert('Please fill in all required fields');
+                return;
+            }
+            
+            const users = getUsers();
+            
+            if (users[email]) {
+                alert('An account with this email already exists. Please login instead.');
+                return;
+            }
+            
+            // Validate key if entered
+            let membership = 'free';
+            if (key) {
+                // Validate the key using the function from karate.js
+                if (typeof validateKey === 'function') {
+                    const validation = validateKey(key);
+                    if (!validation.valid) {
+                        alert('❌ Invalid Key\n\n' + validation.message);
+                        return;
+                    }
+                    membership = validation.level;
+                    // Mark the key as used
+                    markKeyAsUsed(key);
+                } else {
+                    // Fallback: accept any key without validation
+                    membership = 'gold';
+                }
+            }
+            
+            // Create new user
+            users[email] = {
+                name: name,
+                email: email,
+                password: password,
+                membership: membership,
+                key: key || null,
+                createdAt: new Date().toISOString(),
+                status: 'active'
+            };
+            
+            saveUsers(users);
+            
+            alert(`✅ Welcome to the Dojo, ${name}!\n\nYou have been registered as a ${membership} member.\n\nPlease login to continue.`);
+            
+            // Switch to login tab
+            document.querySelector('.auth-tab[data-tab="login"]').click();
+            
+            // Pre-fill email
+            document.getElementById('username').value = email;
+        }
+    </script>
+</body>
+</html>
