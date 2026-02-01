@@ -33,7 +33,7 @@
         </div>
         
         <!-- Hamburger Menu -->
-        <div class="hamburger-menu" id="hamburgerMenu" onclick="toggleMobileMenu()">
+        <div class="hamburger-menu" id="hamburgerMenu" onclick="toggleMobileMenu()" aria-label="Toggle menu" role="button" tabindex="0" onkeypress="if(event.key==='Enter')toggleMobileMenu()">
             <span></span>
             <span></span>
             <span></span>
@@ -57,7 +57,7 @@
         <div class="hero-content">
             <h1>Master the Art of <span class="highlight">Karate</span></h1>
             <p>Learn traditional martial arts from expert senseis. Build discipline, strength, and inner peace.</p>
-            <a href="#techniques" class="cta-btn">Start Learning</a>
+            <a href="#techniques" class="cta-btn" role="button">Start Learning</a>
         </div>
         <div class="hero-image">
             <div class="karate-emblem">
